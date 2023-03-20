@@ -8,11 +8,11 @@ const Login = () => {
         <form action="">
             <div>
                 <input id='email' type="email" placeholder='Email' />
-                <span></span>
+                <span>Digite seu email</span>
             </div>
             <div>
                 <input id='password' type="password" placeholder='Senha' />
-                <span></span>
+                <span>Digite sua senha</span>
             </div>
             <button type='submit'>Entrar</button>         
         </form>

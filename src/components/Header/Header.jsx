@@ -5,6 +5,7 @@ const Header = () => {
     <HeaderStyled>
       <div className="headerContainer mainContainer">
         <h1>Olá, Jean Michel Biz </h1>
+        <h2>Editar Perfil</h2>
         <h2> Sair </h2>
       </div>
     </HeaderStyled>
