@@ -26,7 +26,7 @@ const Register = () => {
                 <span>Confirme sua senha</span>
             </div>
             <div>
-                <input type="text" />
+                <input type="text" placeholder='Telefone' />
                 <span>Digite seu telefone</span>
             </div>
             <button>Cadastrar</button>

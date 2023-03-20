@@ -14,15 +14,26 @@ export const HeaderStyled = styled.header`
     min-height: 100%;
     justify-content: center;
 
+    /* background-color: gray; */
+
     h1 {
       font-weight: 700;
       font-size: 1.125rem;
     }
 
-    h2 {
-      font-size: 0.75rem;
-      color: var(--color-grey-1);
+    div{
+      /* background-color: green; */
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 30px;
+
+      h2 {
+        font-size: 0.9rem;
+        color: var(--color-grey-1);
+      }
     }
+
   }
 
   @media screen and (min-width: 600px) {

@@ -1,5 +1,12 @@
 import styled from "styled-components";
 
+export const CustomerHeaderStyled = styled.div`
+  display: flex;
+  flex-direction: row;
+  margin-left: 30px;
+  gap: 300px;
+  `
+
 export const CustomerListStyled = styled.ul`
   background-color: var(--color-grey-3);
   padding: 10px;
@@ -10,16 +17,19 @@ export const CustomerListStyled = styled.ul`
   border-radius: 4px;
 
   margin-top: 10px;
+  width: 100%;
 
   li {
+    border: 1px solid black;
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    /* justify-content: space-between; */
     align-items: center;
 
     padding: 20px;
 
-    height: 50px;
+    max-height: 70px;
+    max-width: 100%;
 
     background-color: var(--color-grey-4);
     border-radius: 4px;
@@ -30,20 +40,30 @@ export const CustomerListStyled = styled.ul`
       background-color: var(--color-grey-2);
     }
 
-    h4 {
-      font-weight: 700;
-      font-size: 0.875rem;
-      width: 150px;
-    }
-
     div {
       display: flex;
-      flex-direction: row;
+      flex-direction: column; 
       gap: 20px;
+      
+      h1{
+        width: 350px;
+      }
 
-      h5 {
-        font-size: 0.75rem;
+      h2{
+        width: 350px;
+      }
+
+      h3{
+        width: 200px;
       }
     }
+
+    section{
+      /* background-color: green; */
+      padding: 10px;
+
+      
+    }
+
   }
 `;
