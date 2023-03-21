@@ -13,14 +13,14 @@ const CustomerList = () => {
     <CustomerListStyled>
          <li >
           <div>
-          <h1>Jean Michel Biz</h1>
+          <h1>Jean Michel Biz Da Silva Sauro dos Santos Perdrozo Costa Neto Siqueiro Ribas da Silva</h1>
           </div>
           <div>
-          <h2>jeanmbiz@hotmail.com</h2>
+          <h2>jeanmbizcarloseduardobizda@hotmail.com</h2>
           <h2>jeanmbiz@hotmail.com</h2>
           </div>
           <div>
-          <h3>47-984851404</h3>
+          <h3>(047)98485-1404</h3>
           <h3>47-984851404</h3>
           </div>
           <section>
