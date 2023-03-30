@@ -1,4 +1,4 @@
-import React from 'react'
+
 import { CustomerListStyled, CustomerHeaderStyled } from './styles'
 import { VscTrash } from "react-icons/vsc";
 

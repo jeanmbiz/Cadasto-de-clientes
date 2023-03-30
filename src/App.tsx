@@ -7,7 +7,7 @@ function App() {
   return (
     <div>
       <Global/>
-      {/* <Login/> */}
+      <Login/>
       {/* <Register/> */}
       {/* <Dashboard/> */}
       
