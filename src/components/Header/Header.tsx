@@ -1,13 +1,20 @@
-import { HeaderStyled } from "./styles";
+import { useNavigate } from "react-router-dom";
+import { HeaderStyled, LinkEditProfile } from "./styles";
 
 const Header = () => {
+
+  const navigate = useNavigate()
+
+  const handleExit = () =>{
+    navigate('/Login')
+  }
   
   return (
     <HeaderStyled>
       <div className="headerContainer mainContainer">
         <h1>Olá, Jean Michel Biz</h1>
         <div>
-        <h2>Sair</h2>
+        <button onClick={handleExit}>Sair</button>
         <h2>Editar Perfil</h2>
         </div>
       </div>

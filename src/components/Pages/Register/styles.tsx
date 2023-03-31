@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 export const RegisterStyled = styled.main`
@@ -68,4 +69,8 @@ export const RegisterStyled = styled.main`
         }
     }
 
+`
+
+export const LinkReturn = styled(Link)`
+    
 `

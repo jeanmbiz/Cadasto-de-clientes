@@ -1,4 +1,4 @@
-import { RegisterStyled } from "./styles";
+import { LinkReturn, RegisterStyled } from "./styles";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
 import { registerFormSchema } from "../../../Validators/formsSchemas";
@@ -24,10 +24,11 @@ const Register = () => {
     }
   }
 
+
   return (
     <RegisterStyled>
       <div className="topContainer">
-        <p>Voltar</p>
+        <LinkReturn to='/login' >Voltar</LinkReturn>
       </div>
       <div>
         <form onSubmit={handleSubmit(handleRegister)} className="formContainer">

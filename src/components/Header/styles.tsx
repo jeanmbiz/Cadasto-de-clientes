@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 export const HeaderStyled = styled.header`
@@ -21,19 +22,19 @@ export const HeaderStyled = styled.header`
       font-size: 1.125rem;
     }
 
-    div{
+    div {
       /* background-color: green; */
       display: flex;
       flex-direction: column;
       align-items: center;
       gap: 30px;
+    }
 
-      h2 {
+      button {
         font-size: 0.9rem;
         color: var(--color-grey-1);
       }
     }
-
   }
 
   @media screen and (min-width: 600px) {
@@ -43,4 +44,9 @@ export const HeaderStyled = styled.header`
       align-items: center;
     }
   }
+`;
+
+export const LinkEditProfile = styled(Link)`
+  font-size: 0.9rem;
+  color: var(--color-grey-1);
 `;

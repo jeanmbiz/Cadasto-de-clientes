@@ -1,4 +1,4 @@
-import { LoginStyled } from './styles'
+import { LinkNewAcount, LoginStyled } from './styles'
 import { useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { loginFormSchema } from '../../../Validators/formsSchemas'
@@ -34,7 +34,7 @@ const Login = () => {
             <button type='submit'>Entrar</button>         
         </form>
         <div className='criarConta'>
-            <p>Criar nova conta</p>
+            <LinkNewAcount to='/register'>Criar nova conta</LinkNewAcount>
         </div>
         </div>
     </LoginStyled>
