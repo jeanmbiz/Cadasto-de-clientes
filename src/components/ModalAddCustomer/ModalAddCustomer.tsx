@@ -2,8 +2,12 @@ import { ModalAddCustomerStyled } from "./styles";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { addCustomerSchema } from "../../Validators/formsSchemas";
+import { useContext } from "react";
+import { DashboardContext } from "../../Providers/Contexts/DashboardContext";
 
 const ModalAddCustomer = () => {
+  const { setShowModalAddCustomer } = useContext(DashboardContext);
+
   const {
     register,
     handleSubmit,
@@ -20,7 +24,7 @@ const ModalAddCustomer = () => {
         <div className="content">
           <div className="header">
             <h2>Cadastrar Cliente</h2>
-            <button>X</button>
+            <button onClick={() => setShowModalAddCustomer(false)}>X</button>
           </div>
           <div className="mainContent">
             <div>

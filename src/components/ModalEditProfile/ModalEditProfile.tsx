@@ -2,8 +2,13 @@ import { ModalEditProfileStyled } from "./styles";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { editProfileSchema } from "../../Validators/formsSchemas";
+import { useContext } from "react";
+import { DashboardContext } from "../../Providers/Contexts/DashboardContext";
 
 const ModalEditProfile = () => {
+
+  const {setshowModalEditProfile} = useContext(DashboardContext)
+
   const {
     register,
     handleSubmit,
@@ -20,7 +25,7 @@ const ModalEditProfile = () => {
         <div className="content">
           <div className="header">
             <h2>Editar Perfil</h2>
-            <button>X</button>
+            <button onClick={()=> setshowModalEditProfile(false)} >X</button>
           </div>
           <div className="mainContent">
             <div>

@@ -1,7 +1,11 @@
 import { useNavigate } from "react-router-dom";
 import { HeaderStyled, LinkEditProfile } from "./styles";
+import { useContext } from "react";
+import { DashboardContext } from "../../Providers/Contexts/DashboardContext";
 
 const Header = () => {
+
+  const {setshowModalEditProfile} = useContext(DashboardContext)
 
   const navigate = useNavigate()
 
@@ -15,7 +19,7 @@ const Header = () => {
         <h1>Olá, Jean Michel Biz</h1>
         <div>
         <button onClick={handleExit}>Sair</button>
-        <h2>Editar Perfil</h2>
+        <button onClick={()=> setshowModalEditProfile(true)}>Editar Perfil</button>
         </div>
       </div>
     </HeaderStyled>
