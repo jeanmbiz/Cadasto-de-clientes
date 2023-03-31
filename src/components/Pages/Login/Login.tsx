@@ -11,12 +11,13 @@ const Login = () => {
 
     const handleLogin = async (data:any) => {
         console.log(data)
-        // try {
-        //     console.log(data)
-        //     const response = await api.post('/login', data)
-        // } catch (error) {
-        //     axios.isAxiosError(error) && console.log(error.response)
-        // }
+        try {
+            console.log(data)
+            const response = await api.post('/login', data)
+            // const {} = response.data
+        } catch (error) {
+            axios.isAxiosError(error) && console.log(error.response)
+        }
     }
 
   return (

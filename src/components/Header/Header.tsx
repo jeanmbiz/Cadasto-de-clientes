@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import { HeaderStyled, LinkEditProfile } from "./styles";
+import { HeaderStyled } from "./styles";
 import { useContext } from "react";
 import { DashboardContext } from "../../Providers/Contexts/DashboardContext";
 
