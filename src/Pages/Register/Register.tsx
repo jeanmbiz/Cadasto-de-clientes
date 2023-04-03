@@ -1,8 +1,8 @@
 import { LinkReturn, RegisterStyled } from "./styles";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
-import { registerFormSchema } from "../../../Validators/formsSchemas";
-import api from "../../../services/api";
+import { registerFormSchema } from "../../Validators/formsSchemas";
+import api from "../../services/api";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
