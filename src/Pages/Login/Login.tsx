@@ -8,10 +8,14 @@ import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 import jwt_decode from "jwt-decode";
 import { iTokenInfo } from "../../interfaces/Login.Interface";
+import { useContext } from "react";
+import { DashboardContext } from "../../Providers/Contexts/DashboardContext";
 
 const Login = () => {
 
   const navigate = useNavigate()
+
+  const {setUserId} = useContext(DashboardContext)
 
   const {
     register,
@@ -26,6 +30,7 @@ const Login = () => {
       const userInfo: iTokenInfo = jwt_decode(token)
       api.defaults.headers.authorization = `Bearer ${token}`;
       localStorage.setItem("@CustomerBase: Token", token)
+      setUserId(userInfo.sub)
       navigate(`/dashboard/${userInfo.sub}`)
     } catch (error) {
       axios.isAxiosError(error) && console.log(error.response);

@@ -53,16 +53,16 @@ const addCustomerSchema = yup.object().shape({
 const editProfileSchema = yup.object().shape({
   name: yup
     .string()
-    .required("Nome obrigatório")
+    .notRequired()
     .max(80, "Nome pode ter no máximo 80 caracteres"),
   email: yup
     .string()
-    .required("Email obrigatório")
+    .notRequired()
     .email("Email inválido")
     .max(150, "Email pode ter no máximo 150 caracteres"),
   phone: yup
     .string()
-    .required("Telefone obrigatório")
+    .notRequired()
     .max(12, "Telefone pode ter no máximo 12 caracteres"),
 });
 

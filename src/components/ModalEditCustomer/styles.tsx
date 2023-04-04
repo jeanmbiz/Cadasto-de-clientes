@@ -120,9 +120,3 @@ export const ModalEditProfileStyled = styled.div`
     }
   }
 `;
-
-export const deleteAccountButton = styled.button`
-  background-color: red;
-  color: white;
-
-`

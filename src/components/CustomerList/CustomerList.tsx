@@ -1,13 +1,17 @@
 
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { CustomerListStyled, CustomerHeaderStyled } from './styles'
 import { VscTrash } from "react-icons/vsc";
 import api from '../../services/api';
 import { iCustomerResponse, iCustomerResponseAPI } from '../../interfaces/User.interface';
+import { DashboardContext } from '../../Providers/Contexts/DashboardContext';
+import ModalEditCustomer from '../ModalEditCustomer/ModalEditCustomer';
 
 const CustomerList = () => {
 
   const [customersList, setCustomersList] = useState<iCustomerResponse[]>()
+  
+  const {showModalEditCustomer, setShowModalEditCustomer, setCustomerId} = useContext(DashboardContext)
 
   useEffect(()=>{
     async function getCustomersData() {
@@ -28,7 +32,7 @@ const CustomerList = () => {
     <CustomerListStyled>
         {
           customersList && customersList.map(customer => (
-            <li key={customer.id} >
+            <li onClick={()=> {setShowModalEditCustomer(true); setCustomerId(customer.id)} } key={customer.id} >
           <div>
           <h1> {customer.name} </h1>
           </div>
@@ -44,6 +48,9 @@ const CustomerList = () => {
         </li>
 
           ))
+        }
+        {
+          showModalEditCustomer && <ModalEditCustomer/>
         }
     </CustomerListStyled>
     </div>

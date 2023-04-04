@@ -4,13 +4,11 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { editProfileSchema } from "../../Validators/formsSchemas";
 import { useContext } from "react";
 import { DashboardContext } from "../../Providers/Contexts/DashboardContext";
-import api from "../../services/api";
-import axios from "axios";
-import { toast } from "react-toastify";
 
-const ModalEditProfile = () => {
+const ModalEditCustomer = () => {
 
-  const {setshowModalEditProfile, userId, setUser} = useContext(DashboardContext)
+
+  const { setShowModalEditCustomer } = useContext(DashboardContext)
 
   const {
     register,
@@ -18,25 +16,8 @@ const ModalEditProfile = () => {
     formState: { errors },
   } = useForm({ resolver: yupResolver(editProfileSchema) });
 
-  console.log(userId)
-
-  const handleEditProfile = async (data: any) => {
-    const keysWithValues = Object.fromEntries(
-      Object.entries(data).filter(([key, value]) => value !== '')
-    );
-
-    try {
-      const token = localStorage.getItem("@CustomerBase: Token")
-      await api.patch(`/users/${userId}`, keysWithValues, {headers: {Authorization: `Bearer ${token}`}})
-      setshowModalEditProfile(false)
-      setUser(keysWithValues)
-    } catch (error) {
-      axios.isAxiosError(error) && console.log(error.response);
-      toast.error('Houve algum erro')
-    }
-
-    
-    console.log(keysWithValues)
+  const handleEditCustomer = (data: any) => {
+    console.log(data);
   };
 
   return (
@@ -44,8 +25,8 @@ const ModalEditProfile = () => {
       <div className="overlay">
         <div className="content">
           <div className="header">
-            <h2>Editar Perfil</h2>
-            <button onClick={()=> setshowModalEditProfile(false)} >X</button>
+            <h2>Editar Contato</h2>
+            <button onClick={()=> setShowModalEditCustomer(false)}>X</button>
           </div>
           <div className="mainContent">
             <div>
@@ -58,7 +39,7 @@ const ModalEditProfile = () => {
               </span>
             </div>
 
-            <form onSubmit={handleSubmit(handleEditProfile)}>
+            <form onSubmit={handleSubmit(handleEditCustomer)}>
               <div>
                 <label>
                   <input
@@ -89,11 +70,10 @@ const ModalEditProfile = () => {
               <button type="submit">Salvar</button>
             </form>
           </div>
-              <button>Excluir Conta</button>
         </div>
       </div>
     </ModalEditProfileStyled>
   );
 };
 
-export default ModalEditProfile;
+export default ModalEditCustomer;

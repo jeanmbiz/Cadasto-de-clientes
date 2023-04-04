@@ -18,7 +18,6 @@ const Register = () => {
 
   const handleRegister = async (data: any) => {
     try {
-      console.log(data);
       await api.post("/users", data);
       toast.success("Conta criada com sucesso!");
       navigate("/login");

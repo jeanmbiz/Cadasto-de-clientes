@@ -1,6 +1,6 @@
 import { useNavigate, useParams } from "react-router-dom";
 import { HeaderStyled } from "./styles";
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect } from "react";
 import { DashboardContext } from "../../Providers/Contexts/DashboardContext";
 import api from "../../services/api";
 import { iUserResponse } from "../../interfaces/User.interface";
@@ -8,7 +8,7 @@ import { iUserResponse } from "../../interfaces/User.interface";
 const Header = () => {
   const {id} = useParams()
 
-  const [user , setUser] = useState<iUserResponse>()
+const {user, setUser} = useContext(DashboardContext)
 
   useEffect(()=>{
     async function getUserData() {
@@ -18,7 +18,7 @@ const Header = () => {
     }
     getUserData()
   }
-  ,[id])
+  ,[setUser, id])
 
 
   const {setshowModalEditProfile} = useContext(DashboardContext)
