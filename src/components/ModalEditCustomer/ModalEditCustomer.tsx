@@ -17,7 +17,6 @@ const ModalEditCustomer = () => {
   } = useForm({ resolver: yupResolver(editProfileSchema) });
 
   const handleEditCustomer = (data: any) => {
-    console.log(data);
   };
 
   return (

@@ -4,9 +4,12 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { addCustomerSchema } from "../../Validators/formsSchemas";
 import { useContext } from "react";
 import { DashboardContext } from "../../Providers/Contexts/DashboardContext";
+import api from "../../services/api";
+import axios from "axios";
+import { toast } from "react-toastify";
 
 const ModalAddCustomer = () => {
-  const { setShowModalAddCustomer } = useContext(DashboardContext);
+  const { setShowModalAddCustomer, setCustomersList} = useContext(DashboardContext);
 
   const {
     register,
@@ -14,8 +17,20 @@ const ModalAddCustomer = () => {
     formState: { errors },
   } = useForm({ resolver: yupResolver(addCustomerSchema) });
 
-  const handleAddCustomer = (data: any) => {
-    console.log(data);
+  const handleAddCustomer = async (data: any) => {
+    const token = localStorage.getItem("@CustomerBase: Token")
+    if(token){
+      try {
+        await api.post("/customers", data, {headers: {Authorization: `Bearer ${token}`}})
+        setCustomersList( (prevCustomerList:any) => [...prevCustomerList, data])
+        toast.success("Contato cadastrado");
+        setShowModalAddCustomer(false)
+      } catch (error) {
+        axios.isAxiosError(error) && console.log(error.response);
+        toast.error('Houve um erro na requisição com o servidor')
+  
+      }
+    }
   };
 
   return (

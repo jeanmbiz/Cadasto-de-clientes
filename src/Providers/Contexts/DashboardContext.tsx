@@ -1,12 +1,13 @@
 import { createContext } from 'react'
 import { useState } from 'react'
 import { iChildrenProps, iDashboardContext } from '../../interfaces/DashboardContext.Interface'
-import { iUserResponse } from '../../interfaces/User.interface'
+import { iCustomerResponse, iUserResponse } from '../../interfaces/User.interface'
 
 export const DashboardContext = createContext({} as iDashboardContext)
 
 export const DashboardProvider = ({children}:iChildrenProps) => {
 
+    const [customersList, setCustomersList] = useState<iCustomerResponse[]>()
     const [showModalAddCustomer, setShowModalAddCustomer ] = useState<boolean>(false)
     const [showModalEditProfile, setshowModalEditProfile ] = useState<boolean>(false)
     const [showModalEditCustomer, setShowModalEditCustomer ] = useState<boolean>(false)
@@ -27,7 +28,7 @@ export const DashboardProvider = ({children}:iChildrenProps) => {
 
 
     return (
-        <DashboardContext.Provider value={{handleModalAddCustomer, setShowModalAddCustomer, showModalAddCustomer, showModalEditProfile, setshowModalEditProfile, handleModalEditProfile, showModalEditCustomer, setShowModalEditCustomer, customerId, setCustomerId, userId, setUserId, user , setUser}} >
+        <DashboardContext.Provider value={{handleModalAddCustomer, setShowModalAddCustomer, showModalAddCustomer, showModalEditProfile, setshowModalEditProfile, handleModalEditProfile, showModalEditCustomer, setShowModalEditCustomer, customerId, setCustomerId, userId, setUserId, user , setUser, customersList, setCustomersList}} >
             {children}
         </DashboardContext.Provider>
     )

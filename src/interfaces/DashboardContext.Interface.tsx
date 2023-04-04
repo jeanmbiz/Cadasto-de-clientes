@@ -1,5 +1,5 @@
 import { ReactNode } from "react";
-import { iUserResponse } from "./User.interface";
+import { iCustomerResponse, iUserResponse } from "./User.interface";
 
 export interface iChildrenProps {
   children: ReactNode;
@@ -20,4 +20,6 @@ export interface iDashboardContext {
   setUserId: React.Dispatch<React.SetStateAction<string | undefined>>
   user: iUserResponse | undefined
   setUser: React.Dispatch<any>
+  customersList: iCustomerResponse[] | undefined
+  setCustomersList: React.Dispatch<React.SetStateAction<iCustomerResponse[] | undefined>>
 }

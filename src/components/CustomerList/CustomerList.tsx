@@ -1,23 +1,32 @@
 
-import { useContext, useEffect, useState } from 'react';
+import { useContext, useEffect } from 'react';
 import { CustomerListStyled, CustomerHeaderStyled } from './styles'
 import { VscTrash } from "react-icons/vsc";
 import api from '../../services/api';
-import { iCustomerResponse, iCustomerResponseAPI } from '../../interfaces/User.interface';
+import { iCustomerResponseAPI } from '../../interfaces/User.interface';
 import { DashboardContext } from '../../Providers/Contexts/DashboardContext';
 import ModalEditCustomer from '../ModalEditCustomer/ModalEditCustomer';
+import axios from 'axios';
+import { toast } from 'react-toastify';
 
 const CustomerList = () => {
 
-  const [customersList, setCustomersList] = useState<iCustomerResponse[]>()
+
   
-  const {showModalEditCustomer, setShowModalEditCustomer, setCustomerId} = useContext(DashboardContext)
+  const {showModalEditCustomer, setShowModalEditCustomer, setCustomerId, customersList, setCustomersList} = useContext(DashboardContext)
 
   useEffect(()=>{
     async function getCustomersData() {
       const token = localStorage.getItem("@CustomerBase: Token")
-      const customersData:iCustomerResponseAPI = await api.get('/customers', {headers: {Authorization: `Bearer ${token}`}})
-      setCustomersList(customersData.data)
+      if (token){
+        try {
+          const customersData:iCustomerResponseAPI = await api.get('/customers', {headers: {Authorization: `Bearer ${token}`}})
+          setCustomersList(customersData.data)
+        } catch (error) {
+          axios.isAxiosError(error) && console.log(error.response);
+          toast.error('Houve um erro na requisição com o servidor')
+        }
+      }
     }
     getCustomersData()
   },[])

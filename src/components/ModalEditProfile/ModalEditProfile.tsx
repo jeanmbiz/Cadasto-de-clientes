@@ -18,8 +18,6 @@ const ModalEditProfile = () => {
     formState: { errors },
   } = useForm({ resolver: yupResolver(editProfileSchema) });
 
-  console.log(userId)
-
   const handleEditProfile = async (data: any) => {
     const keysWithValues = Object.fromEntries(
       Object.entries(data).filter(([key, value]) => value !== '')
@@ -32,11 +30,8 @@ const ModalEditProfile = () => {
       setUser(keysWithValues)
     } catch (error) {
       axios.isAxiosError(error) && console.log(error.response);
-      toast.error('Houve algum erro')
+      toast.error('Houve um erro na requisição com o servidor')
     }
-
-    
-    console.log(keysWithValues)
   };
 
   return (
