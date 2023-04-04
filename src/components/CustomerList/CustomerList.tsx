@@ -29,7 +29,8 @@ const CustomerList = () => {
       }
     }
     getCustomersData()
-  },[])
+  },[setCustomersList, showModalEditCustomer])
+
 
   return (
     <div className='mainContainer'>
@@ -42,7 +43,7 @@ const CustomerList = () => {
         {
           customersList && customersList.map(customer => (
             <li onClick={()=> {setShowModalEditCustomer(true); setCustomerId(customer.id)} } key={customer.id} >
-          <div>
+          <div >
           <h1> {customer.name} </h1>
           </div>
           <div>
@@ -53,7 +54,7 @@ const CustomerList = () => {
           </div>
           <section>
             <VscTrash/>
-          </section>
+          </section>    
         </li>
 
           ))

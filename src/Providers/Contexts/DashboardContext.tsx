@@ -7,7 +7,7 @@ export const DashboardContext = createContext({} as iDashboardContext)
 
 export const DashboardProvider = ({children}:iChildrenProps) => {
 
-    const [customersList, setCustomersList] = useState<iCustomerResponse[]>()
+    const [customersList, setCustomersList] = useState<iCustomerResponse[]>([])
     const [showModalAddCustomer, setShowModalAddCustomer ] = useState<boolean>(false)
     const [showModalEditProfile, setshowModalEditProfile ] = useState<boolean>(false)
     const [showModalEditCustomer, setShowModalEditCustomer ] = useState<boolean>(false)

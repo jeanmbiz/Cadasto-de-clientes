@@ -21,5 +21,5 @@ export interface iDashboardContext {
   user: iUserResponse | undefined
   setUser: React.Dispatch<any>
   customersList: iCustomerResponse[] | undefined
-  setCustomersList: React.Dispatch<React.SetStateAction<iCustomerResponse[] | undefined>>
+  setCustomersList: React.Dispatch<React.SetStateAction<iCustomerResponse[]>>
 }

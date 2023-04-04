@@ -53,7 +53,6 @@ export const ModalEditProfileStyled = styled.div`
     padding: 20px;
     height: 350px;
 
-
     div {
       display: flex;
       flex-direction: column;
@@ -124,5 +123,4 @@ export const ModalEditProfileStyled = styled.div`
 export const deleteAccountButton = styled.button`
   background-color: red;
   color: white;
-
-`
+`;

@@ -4,11 +4,14 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { editProfileSchema } from "../../Validators/formsSchemas";
 import { useContext } from "react";
 import { DashboardContext } from "../../Providers/Contexts/DashboardContext";
+import api from "../../services/api";
+import axios from "axios";
+import { toast } from "react-toastify";
 
 const ModalEditCustomer = () => {
 
 
-  const { setShowModalEditCustomer } = useContext(DashboardContext)
+  const { setShowModalEditCustomer, customerId} = useContext(DashboardContext)
 
   const {
     register,
@@ -16,7 +19,19 @@ const ModalEditCustomer = () => {
     formState: { errors },
   } = useForm({ resolver: yupResolver(editProfileSchema) });
 
-  const handleEditCustomer = (data: any) => {
+  const handleEditCustomer = async (data: any) => {
+    const keysWithValues = Object.fromEntries(
+      Object.entries(data).filter(([key, value]) => value !== '')
+    );
+
+    try {
+      const token = localStorage.getItem("@CustomerBase: Token")
+      await api.patch(`/customers/${customerId}`, keysWithValues, {headers: {Authorization: `Bearer ${token}`}})
+      setShowModalEditCustomer(false)
+    } catch (error) {
+      axios.isAxiosError(error) && console.log(error.response);
+      toast.error('Houve um erro na requisição com o servidor')
+    }
   };
 
   return (
