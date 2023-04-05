@@ -9,9 +9,7 @@ import axios from "axios";
 import { toast } from "react-toastify";
 
 const ModalEditCustomer = () => {
-
-
-  const { setShowModalEditCustomer, customerId} = useContext(DashboardContext)
+  const { setShowModalEditCustomer, customerId } = useContext(DashboardContext);
 
   const {
     register,
@@ -21,16 +19,18 @@ const ModalEditCustomer = () => {
 
   const handleEditCustomer = async (data: any) => {
     const keysWithValues = Object.fromEntries(
-      Object.entries(data).filter(([key, value]) => value !== '')
+      Object.entries(data).filter(([key, value]) => value !== "")
     );
 
     try {
-      const token = localStorage.getItem("@CustomerBase: Token")
-      await api.patch(`/customers/${customerId}`, keysWithValues, {headers: {Authorization: `Bearer ${token}`}})
-      setShowModalEditCustomer(false)
+      const token = localStorage.getItem("@CustomerBase: Token");
+      await api.patch(`/customers/${customerId}`, keysWithValues, {
+        headers: { Authorization: `Bearer ${token}` },
+      });
+      setShowModalEditCustomer(false);
     } catch (error) {
       axios.isAxiosError(error) && console.log(error.response);
-      toast.error('Houve um erro na requisição com o servidor')
+      toast.error("Houve um erro na requisição com o servidor");
     }
   };
 
@@ -40,7 +40,7 @@ const ModalEditCustomer = () => {
         <div className="content">
           <div className="header">
             <h2>Editar Contato</h2>
-            <button onClick={()=> setShowModalEditCustomer(false)}>X</button>
+            <button onClick={() => setShowModalEditCustomer(false)}>X</button>
           </div>
           <div className="mainContent">
             <div>

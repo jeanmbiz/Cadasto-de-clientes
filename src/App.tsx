@@ -1,7 +1,4 @@
 import RoutesMain from "./Routes/RoutesMain";
-import Dashboard from "./Pages/Dashboard/Dashboard";
-import Login from "./Pages/Login/Login";
-import Register from "./Pages/Register/Register";
 import Global from "./styles/global";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.min.css";

@@ -66,4 +66,9 @@ const editProfileSchema = yup.object().shape({
     .max(12, "Telefone pode ter no máximo 12 caracteres"),
 });
 
-export { registerFormSchema, loginFormSchema, addCustomerSchema, editProfileSchema };
+export {
+  registerFormSchema,
+  loginFormSchema,
+  addCustomerSchema,
+  editProfileSchema,
+};

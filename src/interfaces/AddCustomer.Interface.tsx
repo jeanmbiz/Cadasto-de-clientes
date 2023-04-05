@@ -1,8 +1,5 @@
-
-
-export interface iAddCustomer{
-    name: string,
-    email: string,
-    telefone: string
+export interface iAddCustomer {
+  name: string;
+  email: string;
+  telefone: string;
 }
-

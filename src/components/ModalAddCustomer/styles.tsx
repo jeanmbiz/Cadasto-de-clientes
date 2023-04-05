@@ -56,7 +56,6 @@ export const ModalAddCustomerStyled = styled.div`
     padding: 20px;
     height: 350px;
 
-
     div {
       display: flex;
       flex-direction: column;

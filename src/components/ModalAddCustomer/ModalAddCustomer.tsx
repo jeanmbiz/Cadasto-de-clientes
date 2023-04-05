@@ -9,7 +9,7 @@ import axios from "axios";
 import { toast } from "react-toastify";
 
 const ModalAddCustomer = () => {
-  const { setShowModalAddCustomer} = useContext(DashboardContext);
+  const { setShowModalAddCustomer } = useContext(DashboardContext);
 
   const {
     register,
@@ -18,16 +18,17 @@ const ModalAddCustomer = () => {
   } = useForm({ resolver: yupResolver(addCustomerSchema) });
 
   const handleAddCustomer = async (data: any) => {
-    const token = localStorage.getItem("@CustomerBase: Token")
-    if(token){
+    const token = localStorage.getItem("@CustomerBase: Token");
+    if (token) {
       try {
-        await api.post("/customers", data, {headers: {Authorization: `Bearer ${token}`}})
+        await api.post("/customers", data, {
+          headers: { Authorization: `Bearer ${token}` },
+        });
         toast.success("Contato cadastrado");
-        setShowModalAddCustomer(false)
+        setShowModalAddCustomer(false);
       } catch (error) {
         axios.isAxiosError(error) && console.log(error.response);
-        toast.error('Houve um erro na requisição com o servidor')
-  
+        toast.error("Houve um erro na requisição com o servidor");
       }
     }
   };

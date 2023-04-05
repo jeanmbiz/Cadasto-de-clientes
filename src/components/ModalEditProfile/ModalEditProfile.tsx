@@ -10,42 +10,43 @@ import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 
 const ModalEditProfile = () => {
+  const { setshowModalEditProfile, userId, setUser } =
+    useContext(DashboardContext);
 
-  const {setshowModalEditProfile, userId, setUser} = useContext(DashboardContext)
+  const navigate = useNavigate();
 
-  const navigate = useNavigate()
-
-  const {
-    register,
-    handleSubmit,
-  } = useForm({ resolver: yupResolver(editProfileSchema) });
+  const { register, handleSubmit } = useForm({
+    resolver: yupResolver(editProfileSchema),
+  });
 
   const handleEditProfile = async (data: any) => {
     const keysWithValues = Object.fromEntries(
-      Object.entries(data).filter(([key, value]) => value !== '')
+      Object.entries(data).filter(([key, value]) => value !== "")
     );
 
     try {
-      const token = localStorage.getItem("@CustomerBase: Token")
-      await api.patch(`/users/${userId}`, keysWithValues, {headers: {Authorization: `Bearer ${token}`}})
-      setshowModalEditProfile(false)
-      setUser(keysWithValues)
+      const token = localStorage.getItem("@CustomerBase: Token");
+      await api.patch(`/users/${userId}`, keysWithValues, {
+        headers: { Authorization: `Bearer ${token}` },
+      });
+      setshowModalEditProfile(false);
+      setUser(keysWithValues);
     } catch (error) {
       axios.isAxiosError(error) && console.log(error.response);
-      toast.error('Houve um erro na requisição com o servidor')
+      toast.error("Houve um erro na requisição com o servidor");
     }
   };
 
-  const handleAccountDeletion = (id:string|undefined) =>{
+  const handleAccountDeletion = (id: string | undefined) => {
     try {
-      api.delete(`/users/${id}`)
+      api.delete(`/users/${id}`);
       toast.success("Conta excluída com sucesso!");
-      navigate('/login')
+      navigate("/login");
     } catch (error) {
       toast.error("Ops! Não foi possível excluir!");
       console.log(error);
     }
-  }
+  };
 
   return (
     <ModalEditProfileStyled>
@@ -53,7 +54,7 @@ const ModalEditProfile = () => {
         <div className="content">
           <div className="header">
             <h2>Editar Perfil</h2>
-            <button onClick={()=> setshowModalEditProfile(false)} >X</button>
+            <button onClick={() => setshowModalEditProfile(false)}>X</button>
           </div>
           <div className="mainContent">
             <div>
@@ -84,7 +85,9 @@ const ModalEditProfile = () => {
               </div>
               <button type="submit">Salvar</button>
             </form>
-              <button onClick={()=> handleAccountDeletion(userId)} >Excluir Conta</button>
+            <button onClick={() => handleAccountDeletion(userId)}>
+              Excluir Conta
+            </button>
           </div>
         </div>
       </div>

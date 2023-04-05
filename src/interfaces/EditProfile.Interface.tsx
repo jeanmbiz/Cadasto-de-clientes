@@ -1,5 +1,5 @@
-export interface iEditProfile{
-    name: string,
-    email: string,
-    telefone: string
+export interface iEditProfile {
+  name: string;
+  email: string;
+  telefone: string;
 }

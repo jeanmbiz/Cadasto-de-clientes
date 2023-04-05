@@ -5,7 +5,7 @@ export const CustomerHeaderStyled = styled.div`
   flex-direction: row;
   margin-left: 30px;
   gap: 300px;
-  `
+`;
 
 export const CustomerListStyled = styled.ul`
   background-color: var(--color-grey-3);
@@ -36,39 +36,33 @@ export const CustomerListStyled = styled.ul`
     transition: 0.3s;
 
     &:hover {
-      
       background-color: var(--color-grey-2);
     }
 
     div {
       cursor: pointer;
       display: flex;
-      flex-direction: column; 
+      flex-direction: column;
       gap: 20px;
-      
 
-      
-      h1{
+      h1 {
         width: 350px;
         height: 100%;
       }
 
-      h2{
+      h2 {
         width: 350px;
       }
 
-      h3{
+      h3 {
         width: 200px;
       }
     }
 
-    section{
+    section {
       /* background-color: green; */
       padding: 10px;
       cursor: pointer;
-
-      
     }
-
   }
 `;

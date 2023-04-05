@@ -6,37 +6,39 @@ import api from "../../services/api";
 import { iUserResponse } from "../../interfaces/User.interface";
 
 const Header = () => {
-  const {id} = useParams()
+  const { id } = useParams();
 
-const {user, setUser} = useContext(DashboardContext)
+  const { user, setUser } = useContext(DashboardContext);
 
-  useEffect(()=>{
+  useEffect(() => {
     async function getUserData() {
-      const {data} = await api.get('/users/')
-      const userFiltered = (data.filter((user:iUserResponse) => user.id === id))[0]
-      setUser(userFiltered)
+      const { data } = await api.get("/users/");
+      const userFiltered = data.filter(
+        (user: iUserResponse) => user.id === id
+      )[0];
+      setUser(userFiltered);
     }
-    getUserData()
-  }
-  ,[setUser, id])
+    getUserData();
+  }, [setUser, id]);
 
+  const { setshowModalEditProfile } = useContext(DashboardContext);
 
-  const {setshowModalEditProfile} = useContext(DashboardContext)
+  const navigate = useNavigate();
 
-  const navigate = useNavigate()
+  const handleExit = () => {
+    localStorage.removeItem("@CustomerBase: Token");
+    navigate("/Login");
+  };
 
-  const handleExit = () =>{
-    localStorage.removeItem("@CustomerBase: Token")
-    navigate('/Login')
-  }
-  
   return (
     <HeaderStyled>
       <div className="headerContainer mainContainer">
         <h1>Olá, {user?.name} </h1>
         <div>
-        <button onClick={handleExit}>Sair</button>
-        <button onClick={()=> setshowModalEditProfile(true)}>Editar Perfil</button>
+          <button onClick={handleExit}>Sair</button>
+          <button onClick={() => setshowModalEditProfile(true)}>
+            Editar Perfil
+          </button>
         </div>
       </div>
     </HeaderStyled>

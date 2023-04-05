@@ -5,14 +5,10 @@ export default createGlobalStyle`
     --color-background: #fffff;
     --color-primary: #4267b2;
     --color-primary-focus: #4267b2;
-
     --color-secoundary: #42b72a;
-
     --color-grey-1: ##1d2129;
     --color-grey-2: #dddfe2;
     --color-grey--3: rgb(191, 192, 194);
-
-
     --color-sucess: #3FE864; 
     --color-negative: #E83F5B;
   }

@@ -12,10 +12,9 @@ import { useContext } from "react";
 import { DashboardContext } from "../../Providers/Contexts/DashboardContext";
 
 const Login = () => {
+  const navigate = useNavigate();
 
-  const navigate = useNavigate()
-
-  const {setUserId} = useContext(DashboardContext)
+  const { setUserId } = useContext(DashboardContext);
 
   const {
     register,
@@ -26,15 +25,15 @@ const Login = () => {
   const handleLogin = async (data: any) => {
     try {
       const response = await api.post("/login", data);
-      const token = response.data.token
-      const userInfo: iTokenInfo = jwt_decode(token)
+      const token = response.data.token;
+      const userInfo: iTokenInfo = jwt_decode(token);
       api.defaults.headers.authorization = `Bearer ${token}`;
-      localStorage.setItem("@CustomerBase: Token", token)
-      setUserId(userInfo.sub)
-      navigate(`/dashboard/${userInfo.sub}`)
+      localStorage.setItem("@CustomerBase: Token", token);
+      setUserId(userInfo.sub);
+      navigate(`/dashboard/${userInfo.sub}`);
     } catch (error) {
       axios.isAxiosError(error) && console.log(error.response);
-      toast.error('Usuário ou senha inválido')
+      toast.error("Usuário ou senha inválido");
     }
   };
 

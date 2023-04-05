@@ -12,14 +12,14 @@ export interface iDashboardContext {
   showModalEditProfile: boolean;
   setshowModalEditProfile: React.Dispatch<React.SetStateAction<boolean>>;
   handleModalEditProfile: (status: boolean) => void;
-  showModalEditCustomer: boolean,
-  setShowModalEditCustomer: React.Dispatch<React.SetStateAction<boolean>>
+  showModalEditCustomer: boolean;
+  setShowModalEditCustomer: React.Dispatch<React.SetStateAction<boolean>>;
   customerId: string | undefined;
-  setCustomerId: React.Dispatch<React.SetStateAction<string | undefined>>
-  userId: string | undefined,
-  setUserId: React.Dispatch<React.SetStateAction<string | undefined>>
-  user: iUserResponse | undefined
-  setUser: React.Dispatch<any>
-  customersList: iCustomerResponse[] | undefined
-  setCustomersList: React.Dispatch<React.SetStateAction<iCustomerResponse[]>>
+  setCustomerId: React.Dispatch<React.SetStateAction<string | undefined>>;
+  userId: string | undefined;
+  setUserId: React.Dispatch<React.SetStateAction<string | undefined>>;
+  user: iUserResponse | undefined;
+  setUser: React.Dispatch<any>;
+  customersList: iCustomerResponse[] | undefined;
+  setCustomersList: React.Dispatch<React.SetStateAction<iCustomerResponse[]>>;
 }
