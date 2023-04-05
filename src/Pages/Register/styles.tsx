@@ -72,5 +72,5 @@ export const RegisterStyled = styled.main`
 `
 
 export const LinkReturn = styled(Link)`
-    
+      text-decoration: none;
 `

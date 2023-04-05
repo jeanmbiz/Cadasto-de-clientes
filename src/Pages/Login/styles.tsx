@@ -69,4 +69,5 @@ export const LinkNewAcount = styled(Link)`
   font-size: 17px;
   line-height: 48px;
   padding: 0 16px;
+  text-decoration: none;
 `;
