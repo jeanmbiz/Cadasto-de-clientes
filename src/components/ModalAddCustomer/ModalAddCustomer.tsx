@@ -9,7 +9,7 @@ import axios from "axios";
 import { toast } from "react-toastify";
 
 const ModalAddCustomer = () => {
-  const { setShowModalAddCustomer, setCustomersList} = useContext(DashboardContext);
+  const { setShowModalAddCustomer} = useContext(DashboardContext);
 
   const {
     register,
@@ -22,7 +22,6 @@ const ModalAddCustomer = () => {
     if(token){
       try {
         await api.post("/customers", data, {headers: {Authorization: `Bearer ${token}`}})
-        setCustomersList( (prevCustomerList:any) => [...prevCustomerList, data])
         toast.success("Contato cadastrado");
         setShowModalAddCustomer(false)
       } catch (error) {

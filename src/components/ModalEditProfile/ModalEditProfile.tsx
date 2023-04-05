@@ -7,15 +7,17 @@ import { DashboardContext } from "../../Providers/Contexts/DashboardContext";
 import api from "../../services/api";
 import axios from "axios";
 import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
 
 const ModalEditProfile = () => {
 
   const {setshowModalEditProfile, userId, setUser} = useContext(DashboardContext)
 
+  const navigate = useNavigate()
+
   const {
     register,
     handleSubmit,
-    formState: { errors },
   } = useForm({ resolver: yupResolver(editProfileSchema) });
 
   const handleEditProfile = async (data: any) => {
@@ -34,6 +36,17 @@ const ModalEditProfile = () => {
     }
   };
 
+  const handleAccountDeletion = (id:string|undefined) =>{
+    try {
+      api.delete(`/users/${id}`)
+      toast.success("Conta excluída com sucesso!");
+      navigate('/login')
+    } catch (error) {
+      toast.error("Ops! Não foi possível excluir!");
+      console.log(error);
+    }
+  }
+
   return (
     <ModalEditProfileStyled>
       <div className="overlay">
@@ -47,10 +60,6 @@ const ModalEditProfile = () => {
               <label>
                 <input type="text" placeholder="Nome" {...register("name")} />
               </label>
-              <span>
-                {" "}
-                <> {errors.name?.message} </>{" "}
-              </span>
             </div>
 
             <form onSubmit={handleSubmit(handleEditProfile)}>
@@ -62,10 +71,6 @@ const ModalEditProfile = () => {
                     {...register("email")}
                   />
                 </label>
-                <span>
-                  {" "}
-                  <> {errors.email?.message} </>{" "}
-                </span>
               </div>
 
               <div>
@@ -76,15 +81,11 @@ const ModalEditProfile = () => {
                     {...register("phone")}
                   />
                 </label>
-                <span>
-                  {" "}
-                  <> {errors.phone?.message} </>{" "}
-                </span>
               </div>
               <button type="submit">Salvar</button>
             </form>
+              <button onClick={()=> handleAccountDeletion(userId)} >Excluir Conta</button>
           </div>
-              <button>Excluir Conta</button>
         </div>
       </div>
     </ModalEditProfileStyled>

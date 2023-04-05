@@ -20,10 +20,10 @@ export const CustomerListStyled = styled.ul`
   width: 100%;
 
   li {
+    padding: 0;
     border: 1px solid black;
     display: flex;
     flex-direction: row;
-    /* justify-content: space-between; */
     align-items: center;
 
     padding: 20px;
@@ -36,17 +36,21 @@ export const CustomerListStyled = styled.ul`
     transition: 0.3s;
 
     &:hover {
-      cursor: pointer;
+      
       background-color: var(--color-grey-2);
     }
 
     div {
+      cursor: pointer;
       display: flex;
       flex-direction: column; 
       gap: 20px;
       
+
+      
       h1{
         width: 350px;
+        height: 100%;
       }
 
       h2{
@@ -61,6 +65,7 @@ export const CustomerListStyled = styled.ul`
     section{
       /* background-color: green; */
       padding: 10px;
+      cursor: pointer;
 
       
     }

@@ -51,7 +51,7 @@ export const ModalEditProfileStyled = styled.div`
     flex-direction: column;
     /* gap: 20px; */
     padding: 20px;
-    height: 350px;
+    height: 400px;
 
     div {
       display: flex;
@@ -74,12 +74,12 @@ export const ModalEditProfileStyled = styled.div`
         }
       }
 
-      span {
+      /* span {
         font-size: 0.8rem;
         color: red;
         margin-left: 16px;
         height: 40px;
-      }
+      } */
 
       select {
         width: 100%;

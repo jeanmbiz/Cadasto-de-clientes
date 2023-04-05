@@ -1,5 +1,5 @@
 
-import { useContext, useEffect } from 'react';
+import { useContext, useEffect} from 'react';
 import { CustomerListStyled, CustomerHeaderStyled } from './styles'
 import { VscTrash } from "react-icons/vsc";
 import api from '../../services/api';
@@ -10,10 +10,18 @@ import axios from 'axios';
 import { toast } from 'react-toastify';
 
 const CustomerList = () => {
-
-
   
-  const {showModalEditCustomer, setShowModalEditCustomer, setCustomerId, customersList, setCustomersList} = useContext(DashboardContext)
+  const {showModalEditCustomer, setShowModalEditCustomer, setCustomerId, customerId, customersList, setCustomersList, showModalAddCustomer} = useContext(DashboardContext)
+
+  const handleRemoveCustomer = async (id:string)=>{
+    try {
+      await api.delete(`/customers/${id}`)
+      toast.success('Contato apagado com sucesso')
+    } catch (error) {
+      toast.error("Ops! Não foi possível excluir!");
+      console.log(error);
+    }
+  }
 
   useEffect(()=>{
     async function getCustomersData() {
@@ -21,7 +29,8 @@ const CustomerList = () => {
       if (token){
         try {
           const customersData:iCustomerResponseAPI = await api.get('/customers', {headers: {Authorization: `Bearer ${token}`}})
-          setCustomersList(customersData.data)
+          const activeCustomers = customersData.data.filter(customer => customer.isActive === true)
+          setCustomersList(activeCustomers)
         } catch (error) {
           axios.isAxiosError(error) && console.log(error.response);
           toast.error('Houve um erro na requisição com o servidor')
@@ -29,7 +38,7 @@ const CustomerList = () => {
       }
     }
     getCustomersData()
-  },[setCustomersList, showModalEditCustomer])
+  },[setCustomersList, showModalEditCustomer, showModalAddCustomer, customerId])
 
 
   return (
@@ -41,19 +50,19 @@ const CustomerList = () => {
       </CustomerHeaderStyled>
     <CustomerListStyled>
         {
-          customersList && customersList.map(customer => (
-            <li onClick={()=> {setShowModalEditCustomer(true); setCustomerId(customer.id)} } key={customer.id} >
-          <div >
+          customersList && customersList.map((customer, index) => (
+            <li onClick={()=> {setCustomerId(customer.id)}} key={index} >
+          <div onClick={()=> {setShowModalEditCustomer(true); setCustomerId(customer.id)} }  >
           <h1> {customer.name} </h1>
           </div>
-          <div>
+          <div onClick={()=> {setShowModalEditCustomer(true); setCustomerId(customer.id)} } >
           <h2> {customer.email} </h2>
           </div>
-          <div>
+          <div onClick={()=> {setShowModalEditCustomer(true); setCustomerId(customer.id)} }  >
           <h3> {customer.phone} </h3>
           </div>
           <section>
-            <VscTrash/>
+            <VscTrash onClick={()=> handleRemoveCustomer(customer.id)} />
           </section>    
         </li>
 

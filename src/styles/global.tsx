@@ -23,6 +23,9 @@ export default createGlobalStyle`
     outline:0;
     box-sizing: border-box;
     font-family: 'Inter', sans-serif;
+    
+    
+    
   }
   body,html{
     width: 100vw;
